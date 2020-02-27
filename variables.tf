@@ -40,20 +40,25 @@ variable "ram_role_name" {
   default     = ""
 }
 
-variable "vpc_id" {
-  description = "The vpc id used to launch vswitch, security group and instance."
+variable "support_local_storage" {
+  description = "Whether to support local storage."
+  type        = bool
+  default     = false
+}
+variable "zone_id" {
+  description = "The zone id used to created emr cluster."
   type        = string
   default     = ""
 }
 
 variable "vswitch_id" {
-  description = "The vswitch id used to launch one or more instances."
+  description = "The vswitch id used to created emr cluster."
   type        = string
   default     = ""
 }
 
 variable "security_group_id" {
-  description = "The security group id used to launch one or more instances."
+  description = "The security group id used to created emr cluster."
   type        = string
   default     = ""
 }
@@ -127,24 +132,24 @@ variable "emr_version" {
 variable "host_groups" {
   description = "Host groups to attach to the emr cluster instance."
   type        = list(map(string))
-  default     = [
+  default = [
     {
-      host_group_name   = "master_group"
-      host_group_type   = "MASTER"
-      node_count        = "2"
-      disk_count        = "1"
+      host_group_name = "master_group"
+      host_group_type = "MASTER"
+      node_count      = "2"
+      disk_count      = "1"
     },
     {
-      host_group_name   = "core_group"
-      host_group_type   = "CORE"
-      node_count        = "3"
-      disk_count        = "4"
+      host_group_name = "core_group"
+      host_group_type = "CORE"
+      node_count      = "3"
+      disk_count      = "4"
     },
     {
-      host_group_name   = "task_group"
-      host_group_type   = "TASK"
-      node_count        = "1"
-      disk_count        = "4"
+      host_group_name = "task_group"
+      host_group_type = "TASK"
+      node_count      = "1"
+      disk_count      = "4"
     }
   ]
 }
