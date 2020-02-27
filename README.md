@@ -18,6 +18,11 @@ Usage
 -----
 
 ```hcl
+provider "alicloud" {
+  region  = "cn-hangzhou"
+  profile = "Your-Profile-Name"
+}
+
 data "alicloud_emr_main_versions" "default" {
   cluster_type = ["HADOOP"]
 }
