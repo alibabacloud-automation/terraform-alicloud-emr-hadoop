@@ -12,6 +12,7 @@ data "alicloud_emr_instance_types" "default" {
   support_local_storage = var.support_local_storage
   instance_charge_type  = var.charge_type
   support_node_type     = ["MASTER", "CORE", "TASK", "GATEWAY"]
+  zone_id               = var.zone_id
 }
 
 data "alicloud_emr_disk_types" "data_disk" {
