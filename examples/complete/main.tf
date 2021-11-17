@@ -33,6 +33,7 @@ module "security_group" {
 
 module "emr-hadoop" {
   source = "../.."
+  region = var.region
 
   create = true
 
@@ -46,4 +47,5 @@ module "emr-hadoop" {
   is_open_public_ip        = true
   ssh_enable               = true
   master_pwd               = "YourPassword123!"
+  zone_id                  = data.alicloud_vswitches.all.vswitches.0.zone_id
 }
