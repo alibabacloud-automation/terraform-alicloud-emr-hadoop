@@ -22,7 +22,8 @@ data "alicloud_emr_disk_types" "system_disk" {
   zone_id              = var.zone_id == "" ? data.alicloud_emr_instance_types.default.types.0.zone_id : var.zone_id
 }
 
-resource "random_uuid" "this" {}
+resource "random_uuid" "this" {
+}
 
 resource "alicloud_ram_role" "default" {
   count = var.create ? 1 : 0
