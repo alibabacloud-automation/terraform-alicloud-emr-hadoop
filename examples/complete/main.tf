@@ -39,12 +39,17 @@ module "security_group" {
   vpc_id = module.vpc.this_vpc_id
 }
 
+resource "random_integer" "default" {
+  min = 10000
+  max = 99999
+}
+
 module "emr-hadoop" {
   source = "../.."
 
   #alicloud_ram_role
   create               = true
-  ram_role_name        = "tf-ram-role-name"
+  ram_role_name        = "tf-ram-role-name-${random_integer.default.result}"
   document             = var.document
   ram_role_description = var.ram_role_description
   force                = var.force
